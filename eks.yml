@@ -20,10 +20,44 @@ phases:
     commands:
       - echo checking EKS service access
       - aws eks list-clusters --region us-east-2
-      - echo Logging in to Amazon EKS...
-      - aws eks --region us-east-2 update-kubeconfig --name devops
-      - echo check config 
-      - kubectl config view --minify
+      - mkdir ~/.kube
+      - touch /.kube/config
+      - tee -a /.kube/config <<EOF
+      apiVersion: v1
+clusters:
+- cluster:
+    server: https://FAA0D50E03327A35D62F84C8B47868EE.gr7.us-east-2.eks.amazonaws.com
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJeU1ETXdPVEV5TWpBME4xb1hEVE15T>
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: aws
+  name: aws
+current-context: aws
+kind: Config
+preferences: {}
+users:
+- name: aws
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      command: aws
+      args:
+        - "eks"
+        - "get-token"
+        - "--cluster-name"
+        - "devops"
+        # - "--role-arn"
+        # - "role-arn"
+      # env:
+        # - name: AWS_PROFILE
+        #   value: "aws-profile"
+EOF
+      #- echo Logging in to Amazon EKS...
+      #- aws eks --region us-east-2 update-kubeconfig --name devops
+      #- echo check config 
+      #- kubectl config view --minify
       - echo check kubectl access
       - kubectl get svc
       - echo Logging in to dockerhub...
