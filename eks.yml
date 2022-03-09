@@ -15,6 +15,9 @@ phases:
       - echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
       - echo 'Check kubectl version'
       - kubectl version --short --client
+      - curl -o awscli-bundle.zip https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+      - unzip awscli-bundle.zip
+      - ./awscli-bundle/install -b $HOME/bin/aws
 
   pre_build:
     commands:
