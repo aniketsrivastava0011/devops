@@ -23,6 +23,7 @@ phases:
       - echo Logging in to Amazon EKS...
       - aws eks --region us-east-2 update-kubeconfig --name devops
       - echo check config 
+      - kubectl config set clusters.devops.certificate-authority-data $CADATA
       - kubectl config view --minify
       - echo check kubectl access
       - kubectl get svc
