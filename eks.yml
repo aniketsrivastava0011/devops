@@ -19,7 +19,7 @@ phases:
   pre_build:
     commands:
       - echo checking EKS service access
-      - aws eks list-clusters --region $AWS_DEFAULT_REGION
+      - aws eks list-clusters --region us-east-2
       - echo Logging in to Amazon EKS...
       - aws eks --region us-east-2 update-kubeconfig --name devops
       - echo check config 
