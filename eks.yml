@@ -18,6 +18,7 @@ phases:
 
   pre_build:
     commands:
+      - aws sts get-caller-identity
       - echo checking EKS service access
       - aws eks list-clusters --region us-east-2
       - echo Logging in to Amazon EKS...
@@ -26,7 +27,7 @@ phases:
       - echo check config
       #- cat /root/.kube/config
       - which kubectl
-      - cat /usr/local/bin/.kube/config
+      - cat /usr/local/bin/kubectl/.kube/config
       - kubectl config view --minify
       - echo check kubectl access
       - kubectl get svc
