@@ -21,10 +21,10 @@ phases:
       - echo checking EKS service access
       - aws eks list-clusters --region us-east-2
       - echo Logging in to Amazon EKS...
-      #- ls -la /root/ | grep .kube
-      - mv config /root/.kube/
+      #- mv config /root/.kube/
      # - aws eks --region us-east-2 update-kubeconfig --name devops
-      - echo check config 
+      - echo check config
+      - cat /root/.kube/config
       - kubectl config view --minify
       - echo check kubectl access
       - kubectl get svc
