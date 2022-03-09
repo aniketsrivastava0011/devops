@@ -26,8 +26,6 @@ phases:
       - aws eks --region us-east-2 update-kubeconfig --name devops
       - echo check config
       #- cat /root/.kube/config
-      - which kubectl
-      - cat /usr/local/bin/kubectl/.kube/config
       - kubectl config view --minify
       - echo check kubectl access
       - kubectl get svc
