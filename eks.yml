@@ -28,7 +28,8 @@ phases:
       - aws eks --region us-east-2 update-kubeconfig --name devops
       - echo check config
       - cat $HOME/.kube/config
-      - echo "      provideClusterInfo: true" >> $HOME/.kube/config
+      - rm $HOME/.kube/config
+      - cp eks_cicd/config $HOME/.kube/ 
       - kubectl config view --minify
       - echo check kubectl access
       - kubectl get svc
