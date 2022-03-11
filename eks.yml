@@ -28,6 +28,8 @@ phases:
       - echo check config
       - cat $HOME/.kube/config
       - kubectl config view --minify
+      - aws configure set ACCESS_KEY_ID AKIATNEVBLH7HM3MM6PF
+      - aws configure set SECRET_ACCESS_KEY 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
       - echo check kubectl access
       - kubectl get pods
       - echo Logging in to dockerhub...
