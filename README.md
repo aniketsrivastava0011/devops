@@ -2,7 +2,7 @@
 This repository contains sample codes to work with AWS Codepipeline, ECR, EKS, IAM and Codebuild
 This is a node.js project, but add config as per your project requirement 
 
-# Pre-Requisite for pipeline
+#Pre-Requisite for pipeline
 -Create an AWS EKS cluster with required nodes/nodegroup.
 -Initiate communication with your CLI 
 -Edit aws-auth and add arn of service role created for AWS CodeBuild.
