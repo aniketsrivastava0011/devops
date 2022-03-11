@@ -30,7 +30,7 @@ phases:
       - kubectl get svc
       - echo Logging in to dockerhub...
       - REPOSITORY_URI=$superman0011/devops
-#      - docker login -u $DOCKER_HUB_USERNAME --password-stdin $DOCKER_HUB_PASSWORD
+      - docker login -u $DOCKER_HUB_USERNAME --$DOCKER_HUB_PASSWORD-stdin
       - docker pull $REPOSITORY_URI:$IMAGE_TAG
       
 
