@@ -5,7 +5,7 @@ const config = require('config')
 console.log(config);
 
 app.get('/', (req, res) => {
-  res.send('CICD for EKS-Test_Run...')
+  res.send('CICD for EKS-Test_Run')
 })
 
 app.get('/status', (req, res) => {
