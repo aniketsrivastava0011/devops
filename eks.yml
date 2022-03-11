@@ -25,11 +25,12 @@ phases:
       - aws eks list-clusters --region us-east-2
       - echo Logging in to Amazon EKS...
       - aws eks --region us-east-2 update-kubeconfig --name devops
+      - aws eks describe-cluster --name devops
       - echo check config
       - cat $HOME/.kube/config
       - kubectl config view --minify
       - echo check kubectl access
-      - kubectl get pods
+      - kubectl get svc
       - echo Logging in to dockerhub...
       - REPOSITORY_URI=$superman0011/devops
       - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
