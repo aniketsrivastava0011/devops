@@ -21,11 +21,8 @@ phases:
   pre_build:
     commands:
       - aws sts get-caller-identity
-      - echo checking EKS service access
-      - aws eks list-clusters --region us-east-2
       - echo Logging in to Amazon EKS...
       - aws eks --region us-east-2 update-kubeconfig --name devops
-      - aws eks describe-cluster --name devops
       - echo check config
       - cat $HOME/.kube/config
       - kubectl config view --minify
