@@ -18,7 +18,7 @@ spec:
         app: devops
     spec:
       containers:
-        - image: superman0011/devops:latest
+        - image: 234388281854.dkr.ecr.us-east-2.amazonaws.com/devops:latest
           imagePullPolicy: Always
           name: devops
           ports:
